@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Madhavi Chittimalla - Portfolio</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; }
+    header {
+      background: linear-gradient(270deg, #ff6ec4, #7873f5, #4a90e2, #6a11cb);
+      background-size: 800% 800%;
+      animation: gradientBG 15s ease infinite;
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+    }
+    @keyframes gradientBG {
+      0% {background-position:0% 50%}
+      50% {background-position:100% 50%}
+      100% {background-position:0% 50%}
+    }
+    header h1 { font-size: 3rem; font-weight: bold; }
+    header p { font-size: 1.2rem; }
+    section { padding: 60px 20px; }
+    h2 { color: #6a11cb; font-weight: bold; }
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+    footer {
+      background: linear-gradient(135deg, #6a11cb, #4a90e2);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Madhavi Chittimalla</h1>
+    <p>AI & Machine Learning Student | SR University</p>
+    <p>
+      <a href="mailto:madhavi.ch2021@gmail.com" class="text-white">📧 Email</a> | 
+      <a href="https://linkedin.com/in/madhavi-chittimalla-a52157295" class="text-white">LinkedIn</a> | 
+      <a href="https://github.com/Madhavi2233" class="text-white">GitHub</a>
+    </p>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Portfolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- About -->
+  <section id="about" class="container text-center">
+    <h2 class="mb-4">About Me</h2>
+    <p class="lead">Detail-oriented Computer Science student specializing in Artificial Intelligence and Machine Learning. Proficient in Python, JavaScript, and Data Structures & Algorithms with hands-on experience building AI tools and web applications. Passionate about solving real-world problems using technology and continuously learning new tools.</p>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="bg-light">
+    <div class="container">
+      <h2 class="mb-4">Education</h2>
+      <p><strong>B.Tech in Computer Science Engineering (AI & ML)</strong><br>
+         SR University, Warangal (2023–2027)<br>
+         GPA: 8.58</p>
+      <p><strong>Relevant Coursework:</strong> Data Structures & Algorithms, Artificial Intelligence, Machine Learning, Database Management Systems, Web Development</p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="container">
+    <h2 class="mb-4">Skills</h2>
+    <div class="row text-center">
+      <div class="col-md-4"><div class="card p-3 bg-warning text-dark">Python, JavaScript, C</div></div>
+      <div class="col-md-4"><div class="card p-3 bg-info text-dark">HTML5, CSS3, JavaScript</div></div>
+      <div class="col-md-4"><div class="card p-3 bg-success text-white">NumPy, Pandas, Git, VS Code</div></div>
+      <div class="col-md-4"><div class="card p-3 bg-danger text-white">Data Structures & Algorithms, OOP</div></div>
+      <div class="col-md-4"><div class="card p-3 bg-primary text-white">Machine Learning, Prompt Engineering, LLM Apps</div></div>
+      <div class="col-md-4"><div class="card p-3 bg-secondary text-white">English (Fluent), Telugu</div></div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="bg-light">
+    <div class="container">
+      <h2 class="mb-4">Experience</h2>
+      <div class="card p-4 bg-gradient">
+        <h4>Virtual Internship - AI & ML</h4>
+        <p><strong>1Stop.ai (2025)</strong></p>
+        <ul>
+          <li>Completed practical tasks involving Python and ML concepts</li>
+          <li>Gained hands-on experience with AI tools</li>
+          <li>Learned graph algorithms (BFS, DFS) and practiced problem solving</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects with Sliding Effect -->
+  <!-- Projects with Sliding Effect -->
+<section id="projects" class="container">
+  <h2 class="mb-4">Projects</h2>
+  <div id="projectCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="card p-4 bg-warning">
+          <h5>AI DJ Maker (2025)</h5>
+          <p>Python application for music automation with audio processing features and improved user interaction.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="card p-4 bg-info">
+          <h5>Web Calculator (2024)</h5>
+          <p>Responsive calculator using HTML, CSS, and JavaScript with arithmetic operations and UI logic.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="card p-4 bg-success text-white">
+          <h5>LLM-Based AI Projects (2025)</h5>
+          <ul>
+            <li>AI Resume Analyzer</li>
+            <li>AI Study Assistant</li>
+            <li>MCQ Generator</li>
+            <li>Practiced RAG</li>
+          </ul>
+        </div>
+      </div>
+      <!-- New Project -->
+      <div class="carousel-item">
+        <div class="card p-4 bg-danger text-white">
+          <h5>Parallel Image Processing Using High Performance Computing</h5>
+          <p>Implemented parallel algorithms for image processing tasks leveraging HPC techniques to achieve faster computation and scalability.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Madhavi Chittimalla | Portfolio Website</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
