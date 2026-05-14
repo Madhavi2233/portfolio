@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>AI Resume Analyzer</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg,#eef2ff,#f8fafc);
+            padding: 40px;
+        }
+
+        .container{
+            width: 75%;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0px 0px 18px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .container:hover{
+            transform: translateY(-3px);
+        }
+
+        h1, h2{
+            text-align: center;
+            color: #222;
+        }
+
+        .subtitle{
+            text-align: center;
+            color: gray;
+            margin-bottom: 30px;
+            font-size: 17px;
+        }
+
+        textarea{
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="file"]{
+            padding: 10px;
+        }
+
+        button{
+            background: linear-gradient(90deg,#4f46e5,#7c3aed);
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover{
+            transform: scale(1.03);
+            opacity: 0.95;
+        }
+
+        .score-box{
+            margin-top: 45px;
+        }
+
+        .score{
+            font-size: 65px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .progress-container{
+            width: 100%;
+            background: #ddd;
+            border-radius: 30px;
+            overflow: hidden;
+            margin-top: 18px;
+        }
+
+        .progress-bar{
+            color: white;
+            padding: 13px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .analysis-box{
+            margin-top: 35px;
+            background: #f7f7f7;
+            padding: 28px;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .analysis-box:hover{
+            transform: translateY(-3px);
+        }
+
+        pre{
+            white-space: pre-wrap;
+            font-size: 17px;
+            line-height: 1.9;
+        }
+
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th{
+            background: linear-gradient(90deg,#4f46e5,#7c3aed);
+            color: white;
+            padding: 15px;
+        }
+
+        td{
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        tr:hover{
+            background: #f3f4f6;
+        }
+
+        ul{
+            line-height: 2;
+            font-size: 17px;
+        }
+
+        .footer{
+            text-align: center;
+            margin-top: 35px;
+            color: gray;
+            font-size: 16px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📄 AI Resume vs Job Description Analyzer</h1>
+
+        <div class="subtitle">
+
+            ATS Match Score • AI Skill Analysis • Resume Suggestions • Matching Chart
+
+        </div>
+
+        <form action="/upload"
+              method="POST"
+              enctype="multipart/form-data">
+
+            <label>
+                <b>Upload Resume PDF</b>
+            </label>
+
+            <br><br>
+
+            <input type="file"
+                   name="resume"
+                   required>
+
+            <br><br>
+
+            <label>
+                <b>Paste Job Description</b>
+            </label>
+
+            <br><br>
+
+            <textarea
+                name="job_description"
+                rows="10"
+                placeholder="Paste Job Description Here..."
+                required
+            ></textarea>
+
+            <br><br>
+
+            <button type="submit">
+
+                Analyze Resume
+
+            </button>
+
+        </form>
+
+        {% if score %}
+
+        <div class="score-box">
+
+            <h2>AI Match Score</h2>
+
+            <div class="score"
+                 style="
+                 color:
+                 {% if score >= 75 %}
+                    green
+                 {% elif score >= 50 %}
+                    orange
+                 {% else %}
+                    red
+                 {% endif %}
+                 ;">
+
+                {{ score }}%
+
+            </div>
+
+            <div class="progress-container">
+
+                <div class="progress-bar"
+
+                     style="
+                     width: {{ score }}%;
+
+                     background:
+                     {% if score >= 75 %}
+                        linear-gradient(90deg,#00c853,#64dd17)
+
+                     {% elif score >= 50 %}
+                        linear-gradient(90deg,#ff9800,#ffc107)
+
+                     {% else %}
+                        linear-gradient(90deg,#ff1744,#ff5252)
+
+                     {% endif %}
+                     ;">
+
+                    {{ score }}%
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+        {% if analysis %}
+
+        <div class="analysis-box">
+
+            <h2>AI Analysis</h2>
+
+            <pre>{{ analysis }}</pre>
+
+        </div>
+
+        {% endif %}
+
+        {% if matching_chart %}
+
+        <div class="analysis-box">
+
+            <h2>Matching Chart</h2>
+
+            <table>
+
+                <tr>
+                    <th>Requirement</th>
+                    <th>Status</th>
+                </tr>
+
+                {% for item in matching_chart %}
+
+                <tr>
+
+                    <td>{{ item.skill }}</td>
+
+                    <td>{{ item.status }}</td>
+
+                </tr>
+
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+        {% endif %}
+
+        <div class="analysis-box">
+
+            <h2>Resume Improvement Tips</h2>
+
+            <ul>
+
+                <li>Add measurable achievements in projects.</li>
+
+                <li>Include internship availability.</li>
+
+                <li>Add coding profiles like LeetCode or HackerRank.</li>
+
+                <li>Keep resume ATS-friendly.</li>
+
+                <li>Use strong action verbs in project descriptions.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+
+        Built with ❤️ using Flask + AI
+
+    </div>
+
+</body>
+
+</html>
