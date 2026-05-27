@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Madhavi Chittimalla | AI & ML Portfolio</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --secondary: #06b6d4;
+      --dark: #111827;
+      --light: #f8fafc;
+      --muted: #6b7280;
+      --card: #ffffff;
+    }
+
+    * {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    .navbar {
+      background: rgba(17, 24, 39, 0.96);
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-link {
+      color: #e5e7eb !important;
+      font-weight: 500;
+    }
+
+    .nav-link:hover {
+      color: var(--secondary) !important;
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at top left, rgba(79,70,229,0.35), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(6,182,212,0.35), transparent 35%),
+        linear-gradient(135deg, #0f172a, #111827);
+      color: white;
+      padding: 100px 0 70px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+    }
+
+    .hero .lead {
+      color: #d1d5db;
+      max-width: 720px;
+      margin: auto;
+    }
+
+    .badge-soft {
+      background: rgba(255,255,255,0.12);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 9px 14px;
+      border-radius: 999px;
+      margin: 5px;
+      display: inline-block;
+      font-size: 0.95rem;
+    }
+
+    .btn-main {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn-main:hover {
+      transform: translateY(-3px);
+      color: white;
+      box-shadow: 0 12px 25px rgba(6,182,212,0.25);
+    }
+
+    .btn-outline-light-custom {
+      color: white;
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn-outline-light-custom:hover {
+      background: white;
+      color: var(--dark);
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .custom-card {
+      background: var(--card);
+      border: 1px solid #e5e7eb;
+      border-radius: 22px;
+      padding: 28px;
+      height: 100%;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.07);
+      transition: 0.3s;
+    }
+
+    .custom-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+    }
+
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      font-size: 1.3rem;
+      margin-bottom: 18px;
+    }
+
+    .skill-badge {
+      background: #eef2ff;
+      color: #3730a3;
+      border: 1px solid #c7d2fe;
+      padding: 9px 14px;
+      border-radius: 999px;
+      display: inline-block;
+      margin: 6px;
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .project-tech {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .project-link {
+      color: var(--primary);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .project-link:hover {
+      color: var(--secondary);
+    }
+
+    .timeline-item {
+      border-left: 4px solid var(--primary);
+      padding-left: 20px;
+      margin-bottom: 28px;
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, #111827, #1e293b);
+      color: white;
+      border-radius: 26px;
+      padding: 45px;
+    }
+
+    .contact-box a {
+      color: #a5f3fc;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 24px 0;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        text-align: center;
+      }
+      .contact-box {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Madhavi Chittimalla</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="home">
+    <div class="container text-center">
+      <div class="mb-3">
+        <span class="badge-soft">Final-Year CSE AI & ML Student</span>
+        <span class="badge-soft">Python Developer</span>
+        <span class="badge-soft">Flask & AI Projects</span>
+      </div>
+
+      <h1>Madhavi Chittimalla</h1>
+      <p class="lead mt-3">
+        I build AI-powered and deployment-ready web applications using Python, Flask, NLP, REST APIs, and full-stack development fundamentals.
+      </p>
+
+      <div class="mt-4">
+        <a href="#projects" class="btn btn-main me-2">View Projects</a>
+        <a href="mailto:madhavi.ch2021@gmail.com" class="btn btn-outline-light-custom">Contact Me</a>
+      </div>
+
+      <div class="mt-4">
+        <a href="https://www.linkedin.com/in/madhavi-chittimalla-a52157295" target="_blank" class="text-white mx-2 fs-4"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/Madhavi2233" target="_blank" class="text-white mx-2 fs-4"><i class="bi bi-github"></i></a>
+        <a href="mailto:madhavi.ch2021@gmail.com" class="text-white mx-2 fs-4"><i class="bi bi-envelope-fill"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>About Me</h2>
+        <p>A short professional summary aligned with my resume.</p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="custom-card text-center">
+            <p class="lead mb-0">
+              I am a final-year B.Tech Computer Science Engineering student specializing in Artificial Intelligence and Machine Learning at SR University, Warangal. I have hands-on experience in Python, Flask, REST APIs, NLP, and full-stack web development. I enjoy building practical projects that solve real-world problems and improve my software development skills.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="bg-white">
+    <div class="container">
+      <div class="section-title">
+        <h2>Technical Skills</h2>
+        <p>Technologies and tools I use for building web, AI, and backend applications.</p>
+      </div>
+
+      <div class="text-center">
+        <span class="skill-badge">Python</span>
+        <span class="skill-badge">JavaScript</span>
+        <span class="skill-badge">SQL</span>
+        <span class="skill-badge">HTML</span>
+        <span class="skill-badge">CSS</span>
+        <span class="skill-badge">Flask</span>
+        <span class="skill-badge">Bootstrap</span>
+        <span class="skill-badge">NLP</span>
+        <span class="skill-badge">REST APIs</span>
+        <span class="skill-badge">SQLite</span>
+        <span class="skill-badge">Git</span>
+        <span class="skill-badge">GitHub</span>
+        <span class="skill-badge">Postman</span>
+        <span class="skill-badge">Render</span>
+        <span class="skill-badge">OOPs</span>
+        <span class="skill-badge">DBMS</span>
+        <span class="skill-badge">DSA</span>
+        <span class="skill-badge">Prompt Engineering</span>
+        <span class="skill-badge">LangChain Basics</span>
+        <span class="skill-badge">LLM Applications</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-title">
+        <h2>Projects</h2>
+        <p>My main resume projects with technologies, features, and live demo links.</p>
+      </div>
+
+      <div class="row g-4">
+
+        <div class="col-md-6 col-lg-4">
+          <div class="custom-card">
+            <div class="icon-box"><i class="bi bi-file-earmark-person"></i></div>
+            <h4>AI Resume Analyzer</h4>
+            <p class="project-tech">Python · Flask · NLP · Resume Matching</p>
+            <p>
+              Built an ATS-style resume analyzer that compares resumes with job descriptions, calculates match score, extracts skills, and gives improvement suggestions.
+            </p>
+            <a href="https://ai-resume-analyzer-t8f7.onrender.com" target="_blank" class="project-link">Live Demo <i class="bi bi-arrow-up-right"></i></a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="custom-card">
+            <div class="icon-box"><i class="bi bi-bug-fill"></i></div>
+            <h4>Bug Tracking System</h4>
+            <p class="project-tech">Python · Flask · SQLite · Bootstrap · REST APIs</p>
+            <p>
+              Developed a full-stack bug tracking system with authentication, CRUD operations, search/filter functionality, REST APIs, and Postman API testing.
+            </p>
+            <a href="https://bug-tracking-system-ptky.onrender.com" target="_blank" class="project-link">Live Demo <i class="bi bi-arrow-up-right"></i></a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="custom-card">
+            <div class="icon-box"><i class="bi bi-qr-code"></i></div>
+            <h4>QR Code Generator</h4>
+            <p class="project-tech">Python · Flask · HTML · CSS · JavaScript</p>
+            <p>
+              Created a responsive web application where users can enter text or URLs, generate QR codes instantly, and download the generated QR image.
+            </p>
+            <a href="https://qr-generator-yjh4.onrender.com" target="_blank" class="project-link">Live Demo <i class="bi bi-arrow-up-right"></i></a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="custom-card">
+            <div class="icon-box"><i class="bi bi-recycle"></i></div>
+            <h4>EcoSort</h4>
+            <p class="project-tech">Frontend Development · UI Design</p>
+            <p>
+              Collaborated as a frontend developer to design a responsive and user-friendly interface for a waste segregation web application.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="bg-white">
+    <div class="container">
+      <div class="section-title">
+        <h2>Education</h2>
+        <p>My academic background.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="custom-card">
+            <h5>SR University</h5>
+            <p class="mb-1"><strong>B.Tech in CSE (AI & ML)</strong></p>
+            <p class="text-muted mb-1">2023 – 2027</p>
+            <p>CGPA: 8.5/10</p>
+            <p class="mb-0"><strong>Achievement:</strong> B.Tech Second Year Top Performer</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="custom-card">
+            <h5>SR Junior College</h5>
+            <p class="mb-1"><strong>Intermediate (MPC)</strong></p>
+            <p class="text-muted mb-1">2021 – 2023</p>
+            <p class="mb-0">Percentage: 64.1%</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="custom-card">
+            <h5>Krishnaveni Talent School</h5>
+            <p class="mb-1"><strong>SSC</strong></p>
+            <p class="text-muted mb-1">2020 – 2021</p>
+            <p class="mb-0">GPA: 10.0</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifications">
+    <div class="container">
+      <div class="section-title">
+        <h2>Certifications & Achievements</h2>
+        <p>Certifications, coding practice, and learning activities.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="custom-card">
+            <div class="icon-box"><i class="bi bi-award-fill"></i></div>
+            <h4>Certifications</h4>
+            <ul>
+              <li>Dynamic Programming Camp Certification – AlgoUniversity</li>
+              <li>Graph Camp: Data Structures & Algorithms – AlgoUniversity, 2025</li>
+              <li>AI/ML Fundamentals</li>
+              <li>Python Programming Certification</li>
+              <li>Project Management Certification</li>
+              <li>Web Development Fundamentals</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="custom-card">
+            <div class="icon-box"><i class="bi bi-trophy-fill"></i></div>
+            <h4>Achievements & Activities</h4>
+            <ul>
+              <li>B.Tech Second Year Top Performer</li>
+              <li>Practicing coding problems on LeetCode and HackerRank</li>
+              <li>Actively learning Data Structures and Algorithms</li>
+              <li>Currently learning LangChain and LLM applications</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="bg-white">
+    <div class="container">
+      <div class="contact-box text-center">
+        <h2 class="fw-bold mb-3">Let’s Connect</h2>
+        <p class="mb-4">
+          I am open to AI/ML internships, software development opportunities, and project collaborations.
+        </p>
+
+        <p class="mb-2"><i class="bi bi-envelope-fill"></i> <a href="mailto:madhavi.ch2021@gmail.com">madhavi.ch2021@gmail.com</a></p>
+        <p class="mb-2"><i class="bi bi-linkedin"></i> <a href="https://www.linkedin.com/in/madhavi-chittimalla-a52157295" target="_blank">LinkedIn Profile</a></p>
+        <p class="mb-0"><i class="bi bi-github"></i> <a href="https://github.com/Madhavi2233" target="_blank">GitHub Profile</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="mb-0">&copy; 2026 Madhavi Chittimalla. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
