@@ -3,449 +3,816 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Madhavi Chittimalla | AI & ML Portfolio</title>
+  <meta name="description" content="Portfolio of Madhavi Chittimalla, a CSE AI & ML student and Python developer." />
+  <title>Madhavi Chittimalla | Portfolio</title>
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
   <style>
     :root {
-      --primary: #4f46e5;
+      --primary: #7c3aed;
+      --primary-dark: #5b21b6;
       --secondary: #06b6d4;
-      --dark: #111827;
+      --accent: #f59e0b;
+      --dark: #0f172a;
+      --dark-2: #111827;
       --light: #f8fafc;
-      --muted: #6b7280;
-      --card: #ffffff;
+      --card: rgba(255, 255, 255, 0.88);
+      --text: #172033;
+      --muted: #64748b;
+      --border: rgba(148, 163, 184, 0.25);
+      --shadow: 0 20px 55px rgba(15, 23, 42, 0.10);
     }
 
     * {
+      box-sizing: border-box;
       scroll-behavior: smooth;
     }
 
     body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      background-color: var(--light);
-      color: var(--dark);
+      margin: 0;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 15%, rgba(124, 58, 237, 0.08), transparent 25%),
+        radial-gradient(circle at 85% 20%, rgba(6, 182, 212, 0.08), transparent 28%),
+        var(--light);
       line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
     }
 
     .navbar {
-      background: rgba(17, 24, 39, 0.96);
-      backdrop-filter: blur(10px);
+      background: rgba(15, 23, 42, 0.86);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      transition: 0.3s ease;
     }
 
     .navbar-brand {
-      font-weight: 700;
-      letter-spacing: 0.5px;
+      font-weight: 800;
+      letter-spacing: 0.4px;
     }
 
     .nav-link {
-      color: #e5e7eb !important;
-      font-weight: 500;
+      color: #e2e8f0 !important;
+      font-weight: 600;
+      margin-left: 8px;
+      position: relative;
     }
 
-    .nav-link:hover {
-      color: var(--secondary) !important;
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      bottom: 2px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transform: scaleX(0);
+      transition: 0.25s;
+    }
+
+    .nav-link:hover::after {
+      transform: scaleX(1);
     }
 
     .hero {
-      min-height: 92vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
-      background:
-        radial-gradient(circle at top left, rgba(79,70,229,0.35), transparent 35%),
-        radial-gradient(circle at bottom right, rgba(6,182,212,0.35), transparent 35%),
-        linear-gradient(135deg, #0f172a, #111827);
       color: white;
-      padding: 100px 0 70px;
+      padding: 125px 0 80px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(124, 58, 237, 0.55), transparent 28%),
+        radial-gradient(circle at 80% 25%, rgba(6, 182, 212, 0.42), transparent 30%),
+        linear-gradient(135deg, #091120 0%, #111827 50%, #0f172a 100%);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(4px);
+      opacity: 0.7;
+    }
+
+    .hero::before {
+      width: 280px;
+      height: 280px;
+      background: rgba(124, 58, 237, 0.20);
+      top: 10%;
+      left: -80px;
+      animation: float 7s ease-in-out infinite;
+    }
+
+    .hero::after {
+      width: 220px;
+      height: 220px;
+      background: rgba(6, 182, 212, 0.18);
+      bottom: 5%;
+      right: -40px;
+      animation: float 8s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-22px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #e2e8f0;
+      font-weight: 700;
+      font-size: 0.92rem;
     }
 
     .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 800;
+      font-size: clamp(2.8rem, 7vw, 5.6rem);
+      line-height: 1.02;
+      font-weight: 900;
+      letter-spacing: -2px;
+      margin-top: 20px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #c4b5fd, #67e8f9, #fde68a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .hero .lead {
-      color: #d1d5db;
+      max-width: 760px;
+      color: #cbd5e1;
+      font-size: 1.15rem;
+      margin: 22px auto 0;
+    }
+
+    .hero-badges {
+      margin-top: 25px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      margin: 6px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: white;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .btn-main,
+    .btn-soft {
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.3s ease;
+    }
+
+    .btn-main {
+      color: white;
+      border: 0;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 12px 28px rgba(124, 58, 237, 0.28);
+    }
+
+    .btn-main:hover {
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 16px 34px rgba(6, 182, 212, 0.28);
+    }
+
+    .btn-soft {
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.30);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-soft:hover {
+      color: var(--dark);
+      background: white;
+      transform: translateY(-3px);
+    }
+
+    .social-link {
+      width: 44px;
+      height: 44px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      margin: 0 5px;
+      transition: 0.3s ease;
+    }
+
+    .social-link:hover {
+      color: white;
+      transform: translateY(-4px);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-heading span {
+      display: inline-block;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .section-heading h2 {
+      font-weight: 900;
+      letter-spacing: -1px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
       max-width: 720px;
       margin: auto;
     }
 
-    .badge-soft {
-      background: rgba(255,255,255,0.12);
-      color: white;
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 9px 14px;
-      border-radius: 999px;
-      margin: 5px;
-      display: inline-block;
-      font-size: 0.95rem;
+    .glass-card {
+      height: 100%;
+      padding: 30px;
+      border-radius: 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      transition: 0.35s ease;
     }
 
-    .btn-main {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 999px;
-      font-weight: 600;
-      transition: 0.3s;
+    .glass-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 26px 65px rgba(15, 23, 42, 0.15);
     }
 
-    .btn-main:hover {
-      transform: translateY(-3px);
-      color: white;
-      box-shadow: 0 12px 25px rgba(6,182,212,0.25);
-    }
-
-    .btn-outline-light-custom {
-      color: white;
-      border: 1px solid rgba(255,255,255,0.4);
-      padding: 12px 24px;
-      border-radius: 999px;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    .btn-outline-light-custom:hover {
-      background: white;
-      color: var(--dark);
-    }
-
-    section {
-      padding: 80px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 45px;
-    }
-
-    .section-title h2 {
-      font-weight: 800;
-      color: var(--dark);
-    }
-
-    .section-title p {
-      color: var(--muted);
-      max-width: 700px;
+    .about-card {
+      max-width: 950px;
       margin: auto;
     }
 
-    .custom-card {
-      background: var(--card);
-      border: 1px solid #e5e7eb;
-      border-radius: 22px;
-      padding: 28px;
-      height: 100%;
-      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.07);
-      transition: 0.3s;
+    .about-card p {
+      font-size: 1.08rem;
+      margin: 0;
     }
 
-    .custom-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+    .stats {
+      margin-top: 30px;
+    }
+
+    .stat-box {
+      padding: 18px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(6,182,212,0.08));
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .stat-box h3 {
+      margin: 0;
+      font-weight: 900;
+      color: var(--primary-dark);
+    }
+
+    .stat-box p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .skills-wrap {
+      text-align: center;
+    }
+
+    .skill-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 15px;
+      margin: 6px;
+      border-radius: 999px;
+      color: #4338ca;
+      font-weight: 700;
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      transition: 0.25s ease;
+    }
+
+    .skill-pill:hover {
+      transform: translateY(-3px);
+      color: white;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-color: transparent;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
     }
 
     .icon-box {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
+      width: 54px;
+      height: 54px;
       display: grid;
       place-items: center;
+      border-radius: 16px;
       color: white;
+      font-size: 1.35rem;
+      margin-bottom: 20px;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
-      font-size: 1.3rem;
-      margin-bottom: 18px;
+      box-shadow: 0 10px 24px rgba(124, 58, 237, 0.24);
     }
 
-    .skill-badge {
-      background: #eef2ff;
-      color: #3730a3;
-      border: 1px solid #c7d2fe;
-      padding: 9px 14px;
-      border-radius: 999px;
-      display: inline-block;
-      margin: 6px;
-      font-weight: 600;
-      font-size: 0.92rem;
+    .project-card h4 {
+      font-weight: 800;
     }
 
     .project-tech {
-      color: var(--muted);
-      font-size: 0.92rem;
-      font-weight: 600;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.9rem;
       margin-bottom: 12px;
     }
 
+    .project-card p {
+      color: var(--muted);
+    }
+
     .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       color: var(--primary);
-      font-weight: 700;
-      text-decoration: none;
+      font-weight: 800;
     }
 
     .project-link:hover {
       color: var(--secondary);
     }
 
-    .timeline-item {
-      border-left: 4px solid var(--primary);
-      padding-left: 20px;
-      margin-bottom: 28px;
+    .education-card {
+      max-width: 820px;
+      margin: auto;
+      position: relative;
     }
 
-    .contact-box {
-      background: linear-gradient(135deg, #111827, #1e293b);
+    .education-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 24px;
+      bottom: 24px;
+      width: 5px;
+      border-radius: 999px;
+      background: linear-gradient(var(--primary), var(--secondary));
+    }
+
+    .education-card h4 {
+      font-weight: 900;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #ecfeff;
+      border: 1px solid #a5f3fc;
+      color: #0e7490;
+      font-weight: 700;
+      font-size: 0.86rem;
+      margin: 4px;
+    }
+
+    .list-clean {
+      padding-left: 1.1rem;
+      margin-bottom: 0;
+    }
+
+    .list-clean li {
+      margin-bottom: 10px;
+      color: var(--muted);
+    }
+
+    .contact-section {
+      padding-top: 35px;
+      padding-bottom: 90px;
+    }
+
+    .contact-card {
+      max-width: 980px;
+      margin: auto;
+      padding: 52px 30px;
+      text-align: center;
       color: white;
-      border-radius: 26px;
-      padding: 45px;
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(124,58,237,0.45), transparent 28%),
+        radial-gradient(circle at 85% 25%, rgba(6,182,212,0.35), transparent 30%),
+        linear-gradient(135deg, #0f172a, #111827);
+      box-shadow: 0 30px 70px rgba(15, 23, 42, 0.23);
     }
 
-    .contact-box a {
-      color: #a5f3fc;
-      text-decoration: none;
-      font-weight: 600;
+    .contact-card h2 {
+      font-weight: 900;
+    }
+
+    .contact-item {
+      color: #dbeafe;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 8px 12px;
+      font-weight: 700;
+    }
+
+    .contact-item:hover {
+      color: #67e8f9;
     }
 
     footer {
-      background: #0f172a;
-      color: #cbd5e1;
       text-align: center;
-      padding: 24px 0;
+      color: #cbd5e1;
+      background: #0b1120;
+      padding: 25px 0;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: 0.7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     @media (max-width: 768px) {
       .hero {
-        text-align: center;
+        padding-top: 110px;
       }
-      .contact-box {
-        padding: 30px 20px;
+
+      .hero h1 {
+        letter-spacing: -1px;
+      }
+
+      section {
+        padding: 72px 0;
+      }
+
+      .glass-card {
+        padding: 24px;
+      }
+
+      .contact-card {
+        padding: 40px 20px;
       }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Madhavi Chittimalla</a>
+      <a class="navbar-brand" href="#home">Madhavi Chittimalla</a>
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-          <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certifications">Achievements</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Hero -->
   <header class="hero" id="home">
-    <div class="container text-center">
-      <div class="mb-3">
-        <span class="badge-soft">Final-Year CSE AI & ML Student</span>
-        <span class="badge-soft">Python Developer</span>
-        <span class="badge-soft">Flask & AI Projects</span>
+    <div class="container hero-content text-center">
+      <div class="eyebrow">
+        <i class="bi bi-stars"></i>
+        Open to internships and software opportunities
       </div>
 
-      <h1>Madhavi Chittimalla</h1>
-      <p class="lead mt-3">
-        I build AI-powered and deployment-ready web applications using Python, Flask, NLP, REST APIs, and full-stack development fundamentals.
+      <h1>
+        Hi, I’m <span class="gradient-text">Madhavi Chittimalla</span>
+      </h1>
+
+      <p class="lead">
+        Final-year B.Tech CSE student specializing in Artificial Intelligence and Machine Learning.
+        I build practical AI-powered and full-stack web applications using Python, Flask, NLP,
+        REST APIs, JavaScript, and modern development tools.
       </p>
 
-      <div class="mt-4">
-        <a href="#projects" class="btn btn-main me-2">View Projects</a>
-        <a href="mailto:madhavi.ch2021@gmail.com" class="btn btn-outline-light-custom">Contact Me</a>
+      <div class="hero-badges">
+        <span class="hero-badge">Python Developer</span>
+        <span class="hero-badge">AI & ML Student</span>
+        <span class="hero-badge">Flask Developer</span>
+        <span class="hero-badge">Full-Stack Learner</span>
       </div>
 
       <div class="mt-4">
-        <a href="https://www.linkedin.com/in/madhavi-chittimalla-a52157295" target="_blank" class="text-white mx-2 fs-4"><i class="bi bi-linkedin"></i></a>
-        <a href="https://github.com/Madhavi2233" target="_blank" class="text-white mx-2 fs-4"><i class="bi bi-github"></i></a>
-        <a href="mailto:madhavi.ch2021@gmail.com" class="text-white mx-2 fs-4"><i class="bi bi-envelope-fill"></i></a>
+        <a href="#projects" class="btn btn-main me-2 mb-2">
+          <i class="bi bi-grid-fill me-1"></i> View Projects
+        </a>
+        <a href="#contact" class="btn btn-soft mb-2">
+          <i class="bi bi-send-fill me-1"></i> Contact Me
+        </a>
+      </div>
+
+      <div class="mt-4">
+        <a class="social-link" href="https://www.linkedin.com/in/madhavi-chittimalla-a52157295" target="_blank" aria-label="LinkedIn">
+          <i class="bi bi-linkedin"></i>
+        </a>
+        <a class="social-link" href="https://github.com/Madhavi2233" target="_blank" aria-label="GitHub">
+          <i class="bi bi-github"></i>
+        </a>
+        <a class="social-link" href="mailto:madhavi.ch2021@gmail.com" aria-label="Email">
+          <i class="bi bi-envelope-fill"></i>
+        </a>
       </div>
     </div>
   </header>
 
-  <!-- About -->
   <section id="about">
     <div class="container">
-      <div class="section-title">
-        <h2>About Me</h2>
-        <p>A short professional summary aligned with my resume.</p>
+      <div class="section-heading reveal">
+        <span>About Me</span>
+        <h2>Turning ideas into useful applications</h2>
+        <p>I enjoy building software that solves real-world problems and strengthens my development skills.</p>
       </div>
 
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <div class="custom-card text-center">
-            <p class="lead mb-0">
-              I am a final-year B.Tech Computer Science Engineering student specializing in Artificial Intelligence and Machine Learning at SR University, Warangal. I have hands-on experience in Python, Flask, REST APIs, NLP, and full-stack web development. I enjoy building practical projects that solve real-world problems and improve my software development skills.
-            </p>
+      <div class="glass-card about-card reveal">
+        <p>
+          I am a final-year B.Tech Computer Science Engineering student specializing in Artificial
+          Intelligence and Machine Learning at SR University, Warangal. I have hands-on experience
+          in Python, Flask, REST APIs, NLP, JavaScript, SQL, and full-stack web development.
+          I am interested in software development, AI applications, backend development, and
+          creating reliable, user-friendly products.
+        </p>
+
+        <div class="row g-3 stats">
+          <div class="col-6 col-md-3">
+            <div class="stat-box">
+              <h3>8.5</h3>
+              <p>Current CGPA</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-box">
+              <h3>4+</h3>
+              <p>Major Projects</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-box">
+              <h3>2027</h3>
+              <p>Graduation Year</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-box">
+              <h3>AI/ML</h3>
+              <p>Specialization</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Skills -->
   <section id="skills" class="bg-white">
     <div class="container">
-      <div class="section-title">
-        <h2>Technical Skills</h2>
-        <p>Technologies and tools I use for building web, AI, and backend applications.</p>
+      <div class="section-heading reveal">
+        <span>Technical Skills</span>
+        <h2>Tools and technologies I use</h2>
+        <p>My current technical stack for web development, backend development, AI, and deployment.</p>
       </div>
 
-      <div class="text-center">
-        <span class="skill-badge">Python</span>
-        <span class="skill-badge">JavaScript</span>
-        <span class="skill-badge">SQL</span>
-        <span class="skill-badge">HTML</span>
-        <span class="skill-badge">CSS</span>
-        <span class="skill-badge">Flask</span>
-        <span class="skill-badge">Bootstrap</span>
-        <span class="skill-badge">NLP</span>
-        <span class="skill-badge">REST APIs</span>
-        <span class="skill-badge">SQLite</span>
-        <span class="skill-badge">Git</span>
-        <span class="skill-badge">GitHub</span>
-        <span class="skill-badge">Postman</span>
-        <span class="skill-badge">Render</span>
-        <span class="skill-badge">OOPs</span>
-        <span class="skill-badge">DBMS</span>
-        <span class="skill-badge">DSA</span>
-        <span class="skill-badge">Prompt Engineering</span>
-        <span class="skill-badge">LangChain Basics</span>
-        <span class="skill-badge">LLM Applications</span>
+      <div class="skills-wrap reveal">
+        <span class="skill-pill"><i class="bi bi-filetype-py"></i> Python</span>
+        <span class="skill-pill"><i class="bi bi-braces"></i> JavaScript</span>
+        <span class="skill-pill"><i class="bi bi-database"></i> SQL</span>
+        <span class="skill-pill"><i class="bi bi-filetype-html"></i> HTML</span>
+        <span class="skill-pill"><i class="bi bi-filetype-css"></i> CSS</span>
+        <span class="skill-pill"><i class="bi bi-window"></i> Flask</span>
+        <span class="skill-pill"><i class="bi bi-bootstrap"></i> Bootstrap</span>
+        <span class="skill-pill"><i class="bi bi-diagram-3"></i> REST APIs</span>
+        <span class="skill-pill"><i class="bi bi-database-fill"></i> SQLite</span>
+        <span class="skill-pill"><i class="bi bi-git"></i> Git</span>
+        <span class="skill-pill"><i class="bi bi-github"></i> GitHub</span>
+        <span class="skill-pill"><i class="bi bi-send"></i> Postman</span>
+        <span class="skill-pill"><i class="bi bi-cloud-upload"></i> Render</span>
+        <span class="skill-pill"><i class="bi bi-robot"></i> NLP</span>
+        <span class="skill-pill"><i class="bi bi-cpu"></i> Machine Learning</span>
+        <span class="skill-pill"><i class="bi bi-diagram-2"></i> DSA</span>
+        <span class="skill-pill"><i class="bi bi-boxes"></i> OOP</span>
+        <span class="skill-pill"><i class="bi bi-database-check"></i> DBMS</span>
+        <span class="skill-pill"><i class="bi bi-chat-square-text"></i> Prompt Engineering</span>
+        <span class="skill-pill"><i class="bi bi-stars"></i> LLM Applications</span>
       </div>
     </div>
   </section>
 
-  <!-- Projects -->
   <section id="projects">
     <div class="container">
-      <div class="section-title">
-        <h2>Projects</h2>
-        <p>My main resume projects with technologies, features, and live demo links.</p>
+      <div class="section-heading reveal">
+        <span>Featured Work</span>
+        <h2>Projects I have built</h2>
+        <p>Practical projects focused on AI, backend systems, web development, APIs, and user experience.</p>
       </div>
 
       <div class="row g-4">
-
-        <div class="col-md-6 col-lg-4">
-          <div class="custom-card">
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="glass-card project-card">
             <div class="icon-box"><i class="bi bi-file-earmark-person"></i></div>
             <h4>AI Resume Analyzer</h4>
             <p class="project-tech">Python · Flask · NLP · Resume Matching</p>
             <p>
-              Built an ATS-style resume analyzer that compares resumes with job descriptions, calculates match score, extracts skills, and gives improvement suggestions.
+              Built an ATS-style resume analyzer that compares resumes with job descriptions,
+              calculates a match score, extracts skills, and provides improvement suggestions.
             </p>
-            <a href="https://ai-resume-analyzer-t8f7.onrender.com" target="_blank" class="project-link">Live Demo <i class="bi bi-arrow-up-right"></i></a>
+            <a href="https://ai-resume-analyzer-t8f7.onrender.com" target="_blank" class="project-link">
+              Live Demo <i class="bi bi-arrow-up-right"></i>
+            </a>
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4">
-          <div class="custom-card">
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="glass-card project-card">
             <div class="icon-box"><i class="bi bi-bug-fill"></i></div>
             <h4>Bug Tracking System</h4>
             <p class="project-tech">Python · Flask · SQLite · Bootstrap · REST APIs</p>
             <p>
-              Developed a full-stack bug tracking system with authentication, CRUD operations, search/filter functionality, REST APIs, and Postman API testing.
+              Developed a full-stack bug tracker with authentication, CRUD operations,
+              search and filtering, REST APIs, and Postman API testing.
             </p>
-            <a href="https://bug-tracking-system-ptky.onrender.com" target="_blank" class="project-link">Live Demo <i class="bi bi-arrow-up-right"></i></a>
+            <a href="https://bug-tracking-system-ptky.onrender.com" target="_blank" class="project-link">
+              Live Demo <i class="bi bi-arrow-up-right"></i>
+            </a>
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4">
-          <div class="custom-card">
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="glass-card project-card">
             <div class="icon-box"><i class="bi bi-qr-code"></i></div>
             <h4>QR Code Generator</h4>
             <p class="project-tech">Python · Flask · HTML · CSS · JavaScript</p>
             <p>
-              Created a responsive web application where users can enter text or URLs, generate QR codes instantly, and download the generated QR image.
+              Created a responsive application that allows users to enter text or URLs,
+              generate QR codes instantly, and download the generated QR image.
             </p>
-            <a href="https://qr-generator-yjh4.onrender.com" target="_blank" class="project-link">Live Demo <i class="bi bi-arrow-up-right"></i></a>
+            <a href="https://qr-generator-yjh4.onrender.com" target="_blank" class="project-link">
+              Live Demo <i class="bi bi-arrow-up-right"></i>
+            </a>
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4">
-          <div class="custom-card">
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="glass-card project-card">
+            <div class="icon-box"><i class="bi bi-check2-square"></i></div>
+            <h4>Student Task Manager</h4>
+            <p class="project-tech">React · Node.js · Express.js · SQLite</p>
+            <p>
+              Built a full-stack task management application that helps students create,
+              organize, update, and track academic tasks efficiently.
+            </p>
+            <a href="https://student-task-manager-delta-orpin.vercel.app/" target="_blank" class="project-link">
+              Live Demo <i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="glass-card project-card">
             <div class="icon-box"><i class="bi bi-recycle"></i></div>
             <h4>EcoSort</h4>
-            <p class="project-tech">Frontend Development · UI Design</p>
+            <p class="project-tech">Frontend Development · Responsive UI</p>
             <p>
-              Collaborated as a frontend developer to design a responsive and user-friendly interface for a waste segregation web application.
+              Collaborated as a frontend developer to design a clean, responsive, and
+              user-friendly interface for a waste segregation web application.
             </p>
           </div>
         </div>
 
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="glass-card project-card">
+            <div class="icon-box"><i class="bi bi-github"></i></div>
+            <h4>More Projects</h4>
+            <p class="project-tech">GitHub Portfolio</p>
+            <p>
+              Explore my repositories, source code, experiments, and ongoing learning
+              projects on my GitHub profile.
+            </p>
+            <a href="https://github.com/Madhavi2233" target="_blank" class="project-link">
+              View GitHub <i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Education -->
   <section id="education" class="bg-white">
     <div class="container">
-      <div class="section-title">
-        <h2>Education</h2>
-        <p>My academic background.</p>
+      <div class="section-heading reveal">
+        <span>Education</span>
+        <h2>Academic background</h2>
+        <p>My current undergraduate education and academic achievement.</p>
       </div>
 
-      <div class="row g-4">
-        <div class="col-lg-4">
-          <div class="custom-card">
-            <h5>SR University</h5>
-            <p class="mb-1"><strong>B.Tech in CSE (AI & ML)</strong></p>
-            <p class="text-muted mb-1">2023 – 2027</p>
-            <p>CGPA: 8.5/10</p>
-            <p class="mb-0"><strong>Achievement:</strong> B.Tech Second Year Top Performer</p>
+      <div class="glass-card education-card reveal">
+        <div class="ps-3">
+          <div class="d-flex flex-column flex-md-row justify-content-between gap-2">
+            <div>
+              <h4>SR University, Warangal</h4>
+              <p class="mb-1"><strong>B.Tech in Computer Science Engineering</strong></p>
+              <p class="text-muted mb-2">Specialization: Artificial Intelligence & Machine Learning</p>
+            </div>
+            <div class="text-md-end">
+              <span class="tag">2023 – 2027</span>
+              <span class="tag">CGPA: 8.5/10</span>
+            </div>
           </div>
-        </div>
 
-        <div class="col-lg-4">
-          <div class="custom-card">
-            <h5>SR Junior College</h5>
-            <p class="mb-1"><strong>Intermediate (MPC)</strong></p>
-            <p class="text-muted mb-1">2021 – 2023</p>
-            <p class="mb-0">Percentage: 64.1%</p>
-          </div>
-        </div>
+          <hr>
 
-        <div class="col-lg-4">
-          <div class="custom-card">
-            <h5>Krishnaveni Talent School</h5>
-            <p class="mb-1"><strong>SSC</strong></p>
-            <p class="text-muted mb-1">2020 – 2021</p>
-            <p class="mb-0">GPA: 10.0</p>
-          </div>
+          <p class="mb-0">
+            <i class="bi bi-trophy-fill text-warning me-2"></i>
+            <strong>Achievement:</strong> B.Tech Second Year Top Performer
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Certifications -->
   <section id="certifications">
     <div class="container">
-      <div class="section-title">
-        <h2>Certifications & Achievements</h2>
-        <p>Certifications, coding practice, and learning activities.</p>
+      <div class="section-heading reveal">
+        <span>Learning & Growth</span>
+        <h2>Certifications and achievements</h2>
+        <p>Continuous learning through certifications, coding practice, and technical activities.</p>
       </div>
 
       <div class="row g-4">
-        <div class="col-md-6">
-          <div class="custom-card">
+        <div class="col-md-6 reveal">
+          <div class="glass-card">
             <div class="icon-box"><i class="bi bi-award-fill"></i></div>
-            <h4>Certifications</h4>
-            <ul>
-              <li>Dynamic Programming Camp Certification – AlgoUniversity</li>
+            <h4 class="fw-bold mb-3">Certifications</h4>
+            <ul class="list-clean">
+              <li>Dynamic Programming Camp – AlgoUniversity</li>
               <li>Graph Camp: Data Structures & Algorithms – AlgoUniversity, 2025</li>
               <li>AI/ML Fundamentals</li>
               <li>Python Programming Certification</li>
@@ -455,15 +822,15 @@
           </div>
         </div>
 
-        <div class="col-md-6">
-          <div class="custom-card">
+        <div class="col-md-6 reveal">
+          <div class="glass-card">
             <div class="icon-box"><i class="bi bi-trophy-fill"></i></div>
-            <h4>Achievements & Activities</h4>
-            <ul>
+            <h4 class="fw-bold mb-3">Achievements & Activities</h4>
+            <ul class="list-clean">
               <li>B.Tech Second Year Top Performer</li>
               <li>Practicing coding problems on LeetCode and HackerRank</li>
               <li>Actively learning Data Structures and Algorithms</li>
-              <li>Currently learning LangChain and LLM applications</li>
+              <li>Learning LangChain, prompt engineering, and LLM applications</li>
             </ul>
           </div>
         </div>
@@ -471,28 +838,65 @@
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="bg-white">
+  <section id="contact" class="contact-section">
     <div class="container">
-      <div class="contact-box text-center">
-        <h2 class="fw-bold mb-3">Let’s Connect</h2>
-        <p class="mb-4">
-          I am open to AI/ML internships, software development opportunities, and project collaborations.
+      <div class="contact-card reveal">
+        <h2>Let’s build something meaningful</h2>
+        <p class="mb-4 text-light">
+          I am open to AI/ML internships, software development roles, and project collaborations.
         </p>
 
-        <p class="mb-2"><i class="bi bi-envelope-fill"></i> <a href="mailto:madhavi.ch2021@gmail.com">madhavi.ch2021@gmail.com</a></p>
-        <p class="mb-2"><i class="bi bi-linkedin"></i> <a href="https://www.linkedin.com/in/madhavi-chittimalla-a52157295" target="_blank">LinkedIn Profile</a></p>
-        <p class="mb-0"><i class="bi bi-github"></i> <a href="https://github.com/Madhavi2233" target="_blank">GitHub Profile</a></p>
+        <div>
+          <a class="contact-item" href="mailto:madhavi.ch2021@gmail.com">
+            <i class="bi bi-envelope-fill"></i> madhavi.ch2021@gmail.com
+          </a>
+
+          <a class="contact-item" href="https://www.linkedin.com/in/madhavi-chittimalla-a52157295" target="_blank">
+            <i class="bi bi-linkedin"></i> LinkedIn
+          </a>
+
+          <a class="contact-item" href="https://github.com/Madhavi2233" target="_blank">
+            <i class="bi bi-github"></i> GitHub
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <p class="mb-0">&copy; 2026 Madhavi Chittimalla. All Rights Reserved.</p>
+    <div class="container">
+      <p class="mb-0">&copy; <span id="year"></span> Madhavi Chittimalla. All Rights Reserved.</p>
+    </div>
   </footer>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    revealElements.forEach((element) => revealObserver.observe(element));
+
+    document.querySelectorAll(".navbar .nav-link").forEach((link) => {
+      link.addEventListener("click", () => {
+        const menu = document.querySelector(".navbar-collapse");
+        if (menu.classList.contains("show")) {
+          bootstrap.Collapse.getOrCreateInstance(menu).hide();
+        }
+      });
+    });
+  </script>
 </body>
 </html>
